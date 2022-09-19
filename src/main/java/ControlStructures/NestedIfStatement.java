@@ -18,6 +18,7 @@ public class NestedIfStatement {
 			{
 				System.out.println("Inner block is wrong");
 			}
+		
 		}
 		else
 		{
