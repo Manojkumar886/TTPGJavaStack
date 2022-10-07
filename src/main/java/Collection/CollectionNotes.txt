@@ -1,0 +1,66 @@
+Collection FrameWork:
+____________________
+					
+Collection:	   Predefined
+-->It is used to unfield architectures for storing and manipulating the group of object.
+	Geometry Box--Pencil,Scale,Pen,Rubber
+Collection Default method:
+Sort,Reverse,remove
+
+-->Dynamic Storage
+ 
+-->Dynamic Memory-------Two types,That are
+	(i)Compile time/Static memory -	Array,Data Types
+	(ii)RunTime/Dynamic memory - Object ,Wrapper Classes-Integer,String,Character,Short,Long,Float,Byte,double------Colllection	
+
+-->No type Restriction,that are
+	(I) non-Generic  - it is required to specify the type of object  we need to store.
+		list<Integer> obj=new List<Integer>();
+
+	(II)  Generic- it is not required to specific the type pf objcet
+		List obj=new List();
+
+-->more than interface classes and method(programmming effiency,Performace good)
+
+-->Packages------java.util.collection
+
+-->iteration-----Same as Looping
+Iterator i=hey.iterator();
+while(i.hasnext()---boolean value/true loop is executed)
+{
+sys(i.next());
+}
+
+STROAGE CLASSES:
+__________________
+
+Iterable----->Collection--->list,set,map(This is Interfaces)
+
+List:  ArrayList,Stack,Linked List,Vector
+	*Duplicates Values allowed
+	*Insertion order is maintained
+	
+LINKED LIST- 	add/addLast ,  addFirst, add(index,object), remove/removeFirst, removeLast , remove(index), remove(object),contains-checking process
+			get(index), getFirst, getLast , set(index,object)// update, indexOf(object), clear()..........
+	
+	STACK-	 	push-add, pop-last element deleted, empty-true or false(value), Peek-view the top element, Search-result is counted by last element
+	ARRAYLIST
+	VECTOR-		set(index,object)// update,  add , addAll,  add(index,object), remove(index),   remove(object), contains ,get(index), indexOf(object), removeAll-only removed for original element, retainAll-only removed for dupliicates values
+  	ArrayList bj=new ArrayList();
+
+
+Set:  Hashset,Treeset
+methods:
+set(index,object)// update,  add , addAll,  add(index,object), remove(index),   remove(object), contains ,get(index), indexOf(object), removeAll-only removed for original element, retainAll-only removed for dupliicates values
+	*No dublicates elements allowed
+	*No order is maintained
+
+Deafult method :Compareto -Interface
+
+
+Map:HashMap,HashTable,TreeMap
+	*map<keyclass,Valuesclass>,key class cannot be changed,but values class can changed....
+	*RandomOrder
+	*put(k,v),putAll,get(k),remove(K),ContainsKey(K),ConatinsValue(V),Keyset(),Values()	
+
+	
