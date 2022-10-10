@@ -1,0 +1,109 @@
+Data Base Server-->
+Derby,Oracle,MongoDb,Postgres,SQLlite,MySQL
+MySQL>>>
+Oracle,InnoDB,MariaDB.....
+Tool-->>>
+Wampp,Xampp
+DataBase-->
+ A database in sql server is made up a collection of tables that stores a set of 
+specific structured data....
+data types>> int, double, float, blob-binary large object, lob-large object, 
+bigint, date, varchar(255),.....
+SQL Full FORM- structured Query Languages....
+DDL[Data Definition Languages]: create,alter,truncate - delete the data inside the 
+table, drop-delete a table in database
+DCL[Data Control Languages]: grant, revoke
+DML[Data Manipulation Languages]: insert,update,delete
+DQL[Data Query Languages] : select, joins
+DDL
+Create-Datbase
+CREATE DATABASE `SchoolDetails`;
+
+Table Creation:
+create table `studentdetails`.`schooldetails`(Rollno int(4)not 
+null,StudentName varchar(40) not null,SchoolName varchar(90) not null,grade 
+varchar(10)not null,Place varchar(255)not null,totalmark int(8)not null,percentage 
+double not null);
+
+Alter (using keywords are add,change,drop)
+
+alter table `studentdetails` CHANGE `Rollno` `RegistrationNO` int(8)not null;
+
+alter table `studentdetails` add `Contact_NO` int(10) not null;
+
+ alter TABLE `studentdetails` add PRIMARY KEY (`RegistrationNO`);
+
+alter table `studentdetails` change `RegistrationNO` `RegistrationNO` int(8) 
+not null AUTO_INCREMENT;
+
+alter table `studentdetails` drop PRIMARY KEY;
+
+ALTER TABLE `studentdetails` CHANGE `RegistrationNO` `RegistrationNO` INT(7) 
+NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`RegistrationNO`);
+
+DML-Data Manipulation Languages *Update *Delete
+1.INSERT
+insert into `studentdetails` 
+(`RegistrationNO`,`StudentName`,`SchoolName`,`grade`,`Place`,`totalmark`,`percentag
+e`,`Contact_No`) values('10001','Manojkumar','SVB matric higher secondary 
+school','B','Namakkal','434','86.5','9789355930');
+2.UPDATE 
+update `studentdetails` set stduentName='Manoj' where 
+`RegistrationNO`='10001';
+UPDATE `studentdetails` set `StudentName`='manoj' ,`grade`='A' WHERE 
+`RegistrationNO`='10001';
+3.DELETE
+delete from `studentdetails` where `RegistrationNO`='10001';
+DQl- Data Query Languages
+select,joins
+SELECT- Display all records,distinct,count,max,min,OrderBY,DESC.......!
+Display All details
+1.SELECT * from `schooldetails`;
+Select particular Column
+2.select `RegistrationNO`,`StudentName`,`SchoolName`,`totalmark` from 
+`studentdetails`;
+COUNT- Select records count
+3.select count(*) from `studentdetails`;
+DISTINCT-fetching non dublicates records of specific column
+4.select DISTINCT SchoolName from `studentdetails`;
+WHERE-All column but specific records
+5.SELECT * FROM `studentdetails` WHERE grade='A';
+AND Operator-Two condition is true
+6.SELECT * FROM `studentdetails` WHERE `grade`='A' AND 
+`SchoolName`='Ramachandra Matric Higher Sceondary School';
+NOT
+7.SELECT * FROM `studentdetails` WHERE NOT `SchoolName`='Ramachandra Matric 
+Higher Sceondary School';
+OR
+8.SELECT * FROM `studentdetails` WHERE `SchoolName`='Ramachandra Matric 
+Higher Sceondary School' OR `grade`='A';
+9.SELECT * FROM `studentdetails` WHERE `percentage`>80.5;
+BETWEEN
+10.SELECT * FROM `studentdetails` WHERE percentage BETWEEN '80.0' AND 
+'100.0';
+11.SELECT * FROM `studentdetails` WHERE `SchoolName`='SVB matric higher 
+secondary school' AND `percentage` >88.0;
+ORDER BY Desending Order
+12.SELECT * FROM `studentdetails` ORDER BY `StudentName` DESC;
+ORDER BY Asending order
+13.SELECT * FROM `studentdetails` ORDER BY `StudentName`;
+Particular column in specific records
+14.SELECT StudentName,SchoolName,grade FROM `studentdetails` WHERE 
+`grade`='A';
+MAX15.SELECT max(totalmark),StudentName,Place from `studentdetails`;
+MIN16.SELECT min(totalmark),StudentName,Place from `studentdetails`;
+IN-Particular two set of records display
+17.select * from `studentdetails` where `grade` in ('A','A++');
+AVG18.select AVG(`percentage`) from `studentdetails`;
+SUM19.select SUM(`percentage`) from `studentdetails`;
+LIMIT20.select * from `studentdetails` LIMIT 2;
+FOREIGNKEY- That is Child table
+HAVINGSELECT * FROM `studentdetails` HAVING totalmark>=440;
+LIKESELECT * FROM `studentdetails` WHERE StudentName LIKE '%i';
+JOINSDifferent Types of SQL JOINS
+INNER JOIN: Returns records that have matching values in both tables
+LEFT JOIN: Returns all records from the left table, and the matched records from 
+the right table
+RIGHT JOIN: Returns all records from the right table, and the matched records
+from the left table
+FULL JOIN: Returns all records when there is a match in either left or right table
