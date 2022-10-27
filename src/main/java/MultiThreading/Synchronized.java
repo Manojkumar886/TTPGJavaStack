@@ -21,7 +21,7 @@ public class Synchronized
 {
 	public static void main(String[] args) 
 	{
-		final synch1 sy=new synch1();
+		final synch1 sy=new synch1();//
 		Thread th=new Thread()
 		{
 			public void run()
