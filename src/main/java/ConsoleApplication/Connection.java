@@ -43,6 +43,7 @@ public class Connection implements ZealousAcademyActions
 				System.out.println("which student name you want update");
 				String stud=connect.scan.next();
 				connect.updateStudentdetails(stud);
+				connect.Listallstudentdetails();
 				break;
 			case 4:
 				System.out.println("search based on technolgy");
@@ -51,17 +52,18 @@ public class Connection implements ZealousAcademyActions
 				connect.searchStduentdetails(tech);
 				break;
 			case 5:
-				System.out.println("your values is sorted");
+				connect.SortStudentdetails();
+				break;
+				
 			case 6:
 				System.out.println("which name you want to delete in academic");
 				String nm=connect.scan.next();
 				connect.DeleteStduentdetails(nm);
+				break;
+			default: return;
 			}
-			
-			
 		}
 		while(true);
-		
 	}
 
 	@Override
@@ -100,17 +102,45 @@ public class Connection implements ZealousAcademyActions
 				String field=scan.next();
 				switch(field)
 				{
-				case "studentname":
+				case "studentName":
 					System.out.println("try to youe new student name");
 					String newstud=scan.next();
 					academy[index].setStudentName(newstud);
 					break;
+				case "studentTechnology":
+					System.out.println("try to your new technology name");
+					String tech=scan.next();
+					academy[index].setStudentTechnology(tech);
+					break;
+				case "studentIncharge":
+					System.out.println("try to your new Incharge name");
+					String inch=scan.next();
+					academy[index].setStudentIncharge(inch);
+					break;
+				case "studentMemberscount":
+					System.out.println("try to your new Memberscount");
+					int count=scan.nextInt();
+					academy[index].setStudentMemberscount(count);
+					break;
+				case "studentHours":
+					System.out.println("try to your new Hours details");
+					double hours=scan.nextDouble();
+					academy[index].setStudentHours(hours);
+					break;
+				case "studentCourseprice":
+					System.out.println("try to your new price details");
+					double price=scan.nextDouble();
+					academy[index].setStudentCourseprice(price);
+					break;
+					
 				}
-				System.out.println(field+"has been updated");	
+				System.out.println(field+"has been updated"+name);
+				return;
+				
 			}
 			
 		}
-		
+		System.out.println(name+"has not updated");
 	}
 
 	@Override
@@ -124,16 +154,77 @@ public class Connection implements ZealousAcademyActions
 			System.out.println(academy[index]);
 		}
 	}
-	return;
 	}
 
 	@Override
 	public void SortStudentdetails() 
 	{
-		Arrays.sort(academy);
-		System.out.println(Arrays.toString(academy));
-		
-		
+		ZealousAcademy zealous=null;
+		System.out.println("based on what field you want sort");
+		String field=scan.next();
+		for(int index=0;index<academy.length;index++)
+		{
+			for(int pos=index+1;pos<academy.length;pos++)
+			{
+				if(field.equalsIgnoreCase("studentname"))
+				{
+					if(academy[index].getStudentName().compareTo(academy[pos].getStudentName())>0)
+					{
+						zealous=academy[index];
+						academy[index]=academy[pos];
+						academy[pos]=zealous;
+					}
+				}
+				else if(field.equalsIgnoreCase("studentMemberscount"))
+				{
+					if(academy[index].getStudentMemberscount()>=academy[pos].getStudentMemberscount())
+					{
+						zealous=academy[index];
+						academy[index]=academy[pos];
+						academy[pos]=zealous;
+					}
+				}
+				else if(field.equalsIgnoreCase("studentHours"))
+				{
+					if(academy[index].getStudentHours()>=academy[pos].getStudentHours());
+					{
+						zealous=academy[index];
+						academy[index]=academy[pos];
+						academy[pos]=zealous;
+					}
+				}
+				else if(field.equalsIgnoreCase("studentCourseprice"))
+				{
+					if(academy[index].getStudentCourseprice()>=academy[pos].getStudentCourseprice());
+					{
+						zealous=academy[index];
+						academy[index]=academy[pos];
+						academy[pos]=zealous;
+					}
+				}
+				else if(field.equalsIgnoreCase("studentTechnology"))
+				{
+					if(academy[index].getStudentTechnology().compareTo(academy[pos].getStudentTechnology())>0)
+					{
+						zealous=academy[index];
+						academy[index]=academy[pos];
+						academy[pos]=zealous;
+					}
+				}
+				else if(field.equalsIgnoreCase("studentIncharge"))
+				{
+					if(academy[index].getStudentIncharge().compareTo(academy[pos].getStudentIncharge())>0)
+					{
+						zealous=academy[index];
+						academy[index]=academy[pos];
+						academy[pos]=zealous;
+					}
+				}
+				
+			}
+		}
+					
+	
 	}
 
 	@Override
