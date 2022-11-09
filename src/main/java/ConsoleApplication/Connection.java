@@ -69,16 +69,31 @@ public class Connection implements ZealousAcademyActions
 	@Override
 	public String addnewstudentdetails(ZealousAcademy zealous) 
 	{
-		for(int index=0;index<academy.length;index++)
+		try
 		{
-			if(academy[index]==null)
+			for(int index=0;index<academy.length;index++)
 			{
-				academy[index]=zealous;
-				return zealous.getStudentName()+"has name is added succesfully";
+				if(academy[index]==null)
+				{
+					academy[index]=zealous;
+					return zealous.getStudentName()+"has name is added succesfully";
+				}
 			}
+			throw new ZealousAcademyException();
 		}
-		return zealous.getStudentName()+"has name is not added";
-	}
+		catch(ZealousAcademyException exe)
+		{
+			System.out.println(exe+"memory is full,so if you need any one data is deleted");
+			for(ZealousAcademy zea:academy)
+			{
+				System.out.println(zea.getStudentName());
+			}
+			System.out.println("which name you want delete");
+			DeleteStduentdetails(scan.next());//delete method
+			addnewstudentdetails(zealous);	
+		}
+		return zealous.getStudentName()+"has name is added succesfully";
+		}
 
 	@Override
 	public void Listallstudentdetails()
@@ -230,16 +245,30 @@ public class Connection implements ZealousAcademyActions
 	@Override
 	public void DeleteStduentdetails(String name)
 	{
-		for(int index=0;index<academy.length;index++)
+		try
 		{
-			if(academy[index].getStudentName().equalsIgnoreCase(name))
+			for(int index=0;index<academy.length;index++)
 			{
-				academy[index]=null;
-				System.out.println(name+"has been deleted succesfully");
-				return;
+				if(academy[index].getStudentName().equalsIgnoreCase(name))
+				{
+					academy[index]=null;
+					System.out.println(name+"has been deleted succesfully");
+					return;
+				}
 			}
+			throw new ZealousAcademyException();
 		}
-		System.out.println(name+"has't deleted....");
+		catch(ZealousAcademyException exe)
+		{
+			System.out.println(exe+"name is not matching,please matching values are");
+			for(ZealousAcademy aca:academy)
+			{
+				System.out.println(aca.getStudentName());
+			}
+			System.out.println("please which name you want delete");
+			DeleteStduentdetails(scan.next());
+		}
+		System.out.println(name+"has deleted.");
 	}
 
 }
