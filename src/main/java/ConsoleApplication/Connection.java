@@ -1,6 +1,7 @@
 package ConsoleApplication;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Connection implements ZealousAcademyActions
@@ -107,56 +108,118 @@ public class Connection implements ZealousAcademyActions
 	@Override
 	public void updateStudentdetails(String name) 
 	{
-		for(int index=0;index<academy.length;index++)
+		try
 		{
-			if(academy[index].getStudentName().equalsIgnoreCase(name))
+			for(int index=0;index<academy.length;index++)
 			{
-				System.out.println(name+"which field you want to update");
-				System.out.println(academy[index]);
-				//System.out.println("that fields are studentname,inchargename,members");
-				String field=scan.next();
-				switch(field)
+				if(academy[index].getStudentName().equalsIgnoreCase(name))
 				{
-				case "studentName":
-					System.out.println("try to youe new student name");
-					String newstud=scan.next();
-					academy[index].setStudentName(newstud);
-					break;
-				case "studentTechnology":
-					System.out.println("try to your new technology name");
-					String tech=scan.next();
-					academy[index].setStudentTechnology(tech);
-					break;
-				case "studentIncharge":
-					System.out.println("try to your new Incharge name");
-					String inch=scan.next();
-					academy[index].setStudentIncharge(inch);
-					break;
-				case "studentMemberscount":
-					System.out.println("try to your new Memberscount");
-					int count=scan.nextInt();
-					academy[index].setStudentMemberscount(count);
-					break;
-				case "studentHours":
-					System.out.println("try to your new Hours details");
-					double hours=scan.nextDouble();
-					academy[index].setStudentHours(hours);
-					break;
-				case "studentCourseprice":
-					System.out.println("try to your new price details");
-					double price=scan.nextDouble();
-					academy[index].setStudentCourseprice(price);
-					break;
-					
+					try
+					{
+						System.out.println(name+"which field you want to update");
+						System.out.println(academy[index]);
+						//System.out.println("that fields are studentname,inchargename,members");
+						String field=scan.next();
+						switch(field)
+						{
+						case "studentName":
+							System.out.println("try to youe new student name");
+							String newstud=scan.next();
+							academy[index].setStudentName(newstud);
+							break;
+						case "studentTechnology":
+							System.out.println("try to your new technology name");
+							String tech=scan.next();
+							academy[index].setStudentTechnology(tech);
+							break;
+						case "studentIncharge":
+							System.out.println("try to your new Incharge name");
+							String inch=scan.next();
+							academy[index].setStudentIncharge(inch);
+							break;
+						case "studentMemberscount":
+							System.out.println("try to your new Memberscount");
+							int count=scan.nextInt();
+							academy[index].setStudentMemberscount(count);
+							break;
+						case "studentHours":
+							System.out.println("try to your new Hours details");
+							double hours=scan.nextDouble();
+							academy[index].setStudentHours(hours);
+							break;
+						case "studentCourseprice":
+							System.out.println("try to your new price details");
+							double price=scan.nextDouble();
+							academy[index].setStudentCourseprice(price);
+							break;
+							default:throw new ZealousAcademyException();
+							
+						}
+						System.out.println(field+"has been updated"+name);
+						return;
+					}
+					catch (ZealousAcademyException | InputMismatchException e) 
+					{
+						Scanner scan=new Scanner(System.in);
+						
+						System.out.println(name+"youe field name is wrong ,please enter correct value \n studentName,studentTechnology,studentIncharge,studentMemberscount,studentHours,studentCourseprice ");
+						System.out.println(academy[index]);
+						//System.out.println("that fields are studentname,inchargename,members");
+						String field=scan.next();
+						switch(field)
+						{
+						case "studentName":
+							System.out.println("try to youe new student name");
+							String newstud=scan.next();
+							academy[index].setStudentName(newstud);
+							break;
+						case "studentTechnology":
+							System.out.println("try to your new technology name");
+							String tech=scan.next();
+							academy[index].setStudentTechnology(tech);
+							break;
+						case "studentIncharge":
+							System.out.println("try to your new Incharge name");
+							String inch=scan.next();
+							academy[index].setStudentIncharge(inch);
+							break;
+						case "studentMemberscount":
+							System.out.println("try to your new Memberscount");
+							int count=scan.nextInt();
+							academy[index].setStudentMemberscount(count);
+							break;
+						case "studentHours":
+							System.out.println("try to your new Hours details");
+							double hours=scan.nextDouble();
+							academy[index].setStudentHours(hours);
+							break;
+						case "studentCourseprice":
+							System.out.println("try to your new price details");
+							double price=scan.nextDouble();
+							academy[index].setStudentCourseprice(price);
+							break;
+							default:throw new ZealousAcademyException();
+							
+						}
+						System.out.println(field+"has been updated"+name);
+						return;
+						
+					}
 				}
-				System.out.println(field+"has been updated"+name);
-				return;
-				
 			}
-			
+			throw new ZealousAcademyException();
 		}
-		System.out.println(name+"has not updated");
-	}
+		catch(ZealousAcademyException exe)
+		{
+			System.out.println(exe+"enter your correct student value");
+			for(ZealousAcademy zea:academy)
+			{
+				System.out.println(zea.getStudentName());
+			}
+			System.out.println("which value you update");
+			updateStudentdetails(scan.next());
+		}
+		}
 
 	@Override
 	public void searchStduentdetails(String technology) 
