@@ -1,5 +1,7 @@
 package ConsoleApplication;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data//getter setter and tostring
 @NoArgsConstructor
 @AllArgsConstructor//ZealousAcademy obj=new ZealousAcademy(String studentn..........);
-public class ZealousAcademy  implements Comparable<ZealousAcademy>
+public class ZealousAcademy  implements Comparable<ZealousAcademy>,Serializable
 {
 	private String studentName;
 	private String studentTechnology;
