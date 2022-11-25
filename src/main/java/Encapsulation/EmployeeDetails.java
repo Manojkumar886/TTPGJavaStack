@@ -18,8 +18,9 @@ public class EmployeeDetails
 //		return "EmployeeDetails [empname=" + empname + ", empid=" + empid + ", empSalary=" + empSalary + "]";
 //	}
 //
-//	public EmployeeDetails() {
-////		super();
+//	public EmployeeDetails() 
+//	{
+//		super();
 //		System.out.println("welcome to constructor");
 //		// TODO Auto-generated constructor stub
 //	}
